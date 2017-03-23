@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/AnychetDemo.iml" filepath="$PROJECT_DIR$/AnychetDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/anychatdemo/anychatdemo.iml" filepath="$PROJECT_DIR$/anychatdemo/anychatdemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo/demo.iml" filepath="$PROJECT_DIR$/demo/demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/myNaviDemo.iml" filepath="$PROJECT_DIR$/myNaviDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/navilib/navilib.iml" filepath="$PROJECT_DIR$/navilib/navilib.iml" />
+    </modules>
+  </component>
+</project>
