@@ -9,6 +9,10 @@ import com.bairuitech.anychat.AnyChatCoreSDK;
 import com.bairuitech.anychat.AnyChatDefine;
 import com.bairuitech.anychat.AnyChatVideoCallEvent;
 import com.example.AppApplication;
+import com.example.bean.RoomBean;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by ChneY on 2017/3/3.
@@ -113,6 +117,22 @@ public class AnyChatTools {
         return ints;
     }
 
+    /**
+     * 获取 房间的 List
+     * @return
+     */
+    public List<RoomBean> getRoomInfo() {
+        if (anyChatSDK == null)
+            initSDK();
+        List<RoomBean> list = new ArrayList<>();
+        for (int i = 0; i < 20; i++) {
+            int[] users = anyChatSDK.GetRoomOnlineUsers(i);
+            if (users.length > 0) {
+                list.add(new RoomBean(i, users));
+            }
+        }
+        return list;
+    }
     public int getSelfId() {
         if (anyChatSDK == null)
             initSDK();
@@ -275,7 +295,7 @@ public class AnyChatTools {
         anyChatSDK = null;
     }
 
-    private void ApplyVideoConfig() {
+    public void ApplyVideoConfig() {
 //        ConfigEntity configEntity = ConfigService.LoadConfig(this);
         ConfigEntity configEntity = new ConfigEntity();
         if (configEntity.mConfigMode == 1) // 自定义视频参数配置

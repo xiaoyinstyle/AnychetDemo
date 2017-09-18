@@ -22,15 +22,15 @@ public class AnyChatCoreSDK
 	AnyChatDataEncDecEvent	encdecEvent;
 	AnyChatRecordEvent		recordEvent;
 	AnyChatObjectEvent		objectEvent;
-	
+
 	private static AnyChatCoreSDK mAnyChat = null;		// 单例模式对象
-	
+
 	static MainHandler mHandler = null;
 	public static AnyChatAudioHelper	mAudioHelper = new AnyChatAudioHelper();
 	public static AnyChatCameraHelper	mCameraHelper = new AnyChatCameraHelper();
 	public AnyChatSensorHelper	mSensorHelper = new AnyChatSensorHelper();
 	public AnyChatVideoHelper	mVideoHelper = new AnyChatVideoHelper();
-	
+
 	private static int HANDLE_TYPE_NOTIFYMSG 	= 1;	// 消息通知
 	private static int HANDLE_TYPE_TEXTMSG 		= 2;	// 文字信息
 	private static int HANDLE_TYPE_TRANSFILE 	= 3;	// 文件传输
@@ -40,7 +40,7 @@ public class AnyChatCoreSDK
 	private static int HANDLE_TYPE_VIDEOCALL	= 7;	// 视频呼叫
 	private static int HANDLE_TYPE_RECORD		= 8;	// 录像、拍照
 	private static int HANDLE_TYPE_OBJECTEVENT	= 9;	// 业务对象事件
-	
+
 	// 获取单例模式对象
 	public synchronized static AnyChatCoreSDK getInstance(Context context)
 	{
@@ -48,11 +48,11 @@ public class AnyChatCoreSDK
 			mAnyChat = new AnyChatCoreSDK();
 		return mAnyChat;
 	}
-	
+
 	public AnyChatCoreSDK() {
-		
+
 	}
-	
+
 	// 设置AnyChat基本事件通知接口
 	public void SetBaseEvent(AnyChatBaseEvent e)
 	{
@@ -114,7 +114,7 @@ public class AnyChatCoreSDK
 		RegisterNotify();
 		this.objectEvent = e;
 	}
-	
+
 	// 查询SDK主版本号
 	public int GetSDKMainVersion()
 	{
@@ -130,10 +130,10 @@ public class AnyChatCoreSDK
 	{
 		return GetSDKOptionString(AnyChatDefine.BRAC_SO_CORESDK_BUILDTIME);
 	}
-    
+
     // 注册消息通知
     public native int RegisterNotify();
-    
+
     // 初始化SDK
     public native int InitSDK(int osver, int flags);
     // 连接服务器
@@ -146,14 +146,14 @@ public class AnyChatCoreSDK
     public native int EnterRoom(int roomid, String password);
     // 进入房间（房间名称）
     public native int EnterRoomEx(String roomname, String password);
-    
+
     // 退出房间
     public native int LeaveRoom(int roomid);
     // 注销登录
     public native int Logout();
     // 释放资源
     public native int Release();
-    
+
     // 获取在线用户列表（推荐使用GetRoomOnlineUsers）
     public native int[] GetOnlineUser();
     // 获取指定房间在线用户列表
@@ -170,12 +170,12 @@ public class AnyChatCoreSDK
 	public native int StreamRecordCtrlEx(int userid, int bstartrecord, int flags, int param, String szUserStr);
 	// 用户图像抓拍
 	public native int SnapShot(int userid, int flags, int param);
-	
+
 	// 获取指定音频设备的当前音量
 	public native int AudioGetVolume(int device);
 	// 设置指定音频设备的音量
 	public native int AudioSetVolume(int device, int volume);
-    
+
     // 获取指定用户的字符串类型状态
     public native String QueryUserStateString(int userid, int infoname);
 	// 获取指定用户的整型状态
@@ -190,7 +190,7 @@ public class AnyChatCoreSDK
 	public native int GetUserVideoWidth(int userid);
 	// 获取指定用户的视频分辨率高度
 	public native int GetUserVideoHeight(int userid);
-	
+
 	// 获取指定房间的字符串类型状态
     public native String QueryRoomStateString(int roomid, int infoname);
 	// 获取指定房间的整型状态
@@ -206,7 +206,7 @@ public class AnyChatCoreSDK
 	public static native int GetSDKOptionInt(int optname);
 	// 查询SDK参数（字符串值）
 	public static native String GetSDKOptionString(int optname);
-	
+
 	// 发送文字消息
 	public native int SendTextMessage(int userid, int secret, String message);
 	// 传送文件
@@ -221,10 +221,10 @@ public class AnyChatCoreSDK
 	public native int QueryTransTaskInfo(int userid, int taskid, int infoname, AnyChatOutParam outParam);
 	// 发送SDK Filter 通信数据
 	public native int SendSDKFilterData(byte[] buf, int len);
-	
+
 	// 获取音频播放数据
 	public static native byte[] FetchAudioPlayBuffer(int size);
-	
+
 	// 本地视频自动对焦
 	public void CameraAutoFocus()
 	{
@@ -240,7 +240,7 @@ public class AnyChatCoreSDK
 	{
 		return QueryUserStateString(userid, AnyChatDefine.BRAC_USERSTATE_INTERNETIP);
 	}
-	
+
 	// 枚举本地视频采集设备
 	public native String[] EnumVideoCapture();
 	// 选择指定的视频采集设备
@@ -258,8 +258,8 @@ public class AnyChatCoreSDK
 	// 选择指定的音频播放设备
 	public native int SelectAudioPlayback(String devicename);
 	// 获取当前使用的音频播放设备
-	public native String GetCurAudioPlayback();	
-	
+	public native String GetCurAudioPlayback();
+
 	// 更改当前的聊天模式
 	public native int ChangeChatMode(int chatmode);
 	// 获取指定用户当前的聊天模式（返回值为dwChatMode）
@@ -272,7 +272,7 @@ public class AnyChatCoreSDK
 	public native int PrivateChatEchoEx(int userid, int requestid, int errorcode);
 	// 退出与某用户的私聊，或者将某用户从自己的私聊列表中清除
 	public native int PrivateChatExit(int userid);
-	
+
 	// 设置外部输入视频格式
 	public static native int SetInputVideoFormat(int pixFmt, int dwWidth, int dwHeight, int dwFps, int dwFlags);
 	// 外部视频数据输入
@@ -281,10 +281,10 @@ public class AnyChatCoreSDK
 	public static native int SetInputAudioFormat(int dwChannels, int dwSamplesPerSec, int dwBitsPerSample, int dwFlags);
 	// 外部音频数据输入
 	public static native int InputAudioData(byte[] lpSamples, int dwSize, int dwTimeStamp);
-	
+
 	// 视频呼叫事件控制（请求、回复、挂断等）
 	public native int VideoCallControl(int dwEventType, int dwUserId, int dwErrorCode, int dwFlags, int dwParam, String szUserStr);
-	
+
 	// 获取用户好友ID列表
 	public native int[] GetUserFriends();
 	// 获取好友在线状态
@@ -299,12 +299,12 @@ public class AnyChatCoreSDK
 	public native String GetGroupName(int dwGroupId);
 	// 用户信息控制
 	public native int UserInfoControl(int dwUserId, int dwCtrlCode, int wParam, int lParam, String szStrValue);
-	
+
 	// IP组播功能控制
 	public native int MultiCastControl(String lpMultiCastAddr, int dwPort, String lpNicAddr, int dwTTL, int dwFlags);
 	// 向服务器动态查询相关信息
 	public native String QueryInfoFromServer(int dwInfoName, String strInParam, int dwFlags);
-	
+
 	// 获取业务对象列表
 	public static native int[] ObjectGetIdList(int dwObjectType);
 	// 获取业务对象参数值（整型）
@@ -318,13 +318,13 @@ public class AnyChatCoreSDK
 	// 业务对象参数控制
 	public static native int ObjectControl(int dwObjectType, int dwObjectId, int dwCtrlCode, int dwParam1, int dwParam2, int dwParam3, int dwParam4, String lpStrValue);
 
-    
+
     // 异步消息通知
     public void OnNotifyMsg(int dwNotifyMsg, int wParam, int lParam)
     {
     	switch(dwNotifyMsg)
     	{
-		case AnyChatDefine.WM_GV_CONNECT:			
+		case AnyChatDefine.WM_GV_CONNECT:
 			if(baseEvent != null)
 				baseEvent.OnAnyChatConnectMessage(wParam>=1?true:false);
 			break;
@@ -351,7 +351,7 @@ public class AnyChatCoreSDK
 		case AnyChatDefine.WM_GV_MICSTATECHANGE:
 			if(stateChgEvent != null)
 				stateChgEvent.OnAnyChatMicStateChgMessage(wParam,lParam==0?false:true);
-			break;			
+			break;
 		case AnyChatDefine.WM_GV_CAMERASTATE:
 			if(stateChgEvent != null)
 				stateChgEvent.OnAnyChatCameraStateChgMessage(wParam,lParam);
@@ -414,12 +414,12 @@ public class AnyChatCoreSDK
 			break;
 		}
     }
-  
+
     static class MainHandler extends Handler
     {
     	WeakReference<AnyChatCoreSDK> mAnyChat;
-    	
-    	
+
+
          public MainHandler(AnyChatCoreSDK anychat){
         	 mAnyChat = new WeakReference<AnyChatCoreSDK>(anychat);
          }
@@ -487,7 +487,7 @@ public class AnyChatCoreSDK
             	 int length = tBundle.getInt("LENGTH");
             	 byte[] buf = tBundle.getByteArray("BUF");
             	 if(anychat.transDataEvent != null)
-            		 anychat.transDataEvent.OnAnyChatSDKFilterData(buf, length); 
+            		 anychat.transDataEvent.OnAnyChatSDKFilterData(buf, length);
              }
              else if(type == HANDLE_TYPE_VIDEOCALL)
              {
@@ -532,7 +532,7 @@ public class AnyChatCoreSDK
             }
         }
      }
-   
+
     // 异步消息通知（AnyChat底层其它线程回调上来，需要通过Msg传递到主线程）
 	private void OnAnyChatNotifyMsg(int dwNotifyMsg, int wParam, int lParam)
     {
@@ -540,7 +540,7 @@ public class AnyChatCoreSDK
 			return;
     	Message tMsg=new Message();
         Bundle tBundle=new Bundle();
-        tBundle.putInt("HANDLETYPE", HANDLE_TYPE_NOTIFYMSG);       
+        tBundle.putInt("HANDLETYPE", HANDLE_TYPE_NOTIFYMSG);
         tBundle.putInt("MSG", dwNotifyMsg);
         tBundle.putInt("WPARAM", wParam);
         tBundle.putInt("LPARAM", lParam);
@@ -554,7 +554,7 @@ public class AnyChatCoreSDK
 			return;
     	Message tMsg=new Message();
         Bundle tBundle=new Bundle();
-        tBundle.putInt("HANDLETYPE", HANDLE_TYPE_TEXTMSG);       
+        tBundle.putInt("HANDLETYPE", HANDLE_TYPE_TEXTMSG);
         tBundle.putInt("FROMUSERID", dwFromUserid);
         tBundle.putInt("TOUSERID", dwToUserid);
         tBundle.putInt("SECRET", bSecret);
@@ -569,7 +569,7 @@ public class AnyChatCoreSDK
 			return;
     	Message tMsg=new Message();
         Bundle tBundle=new Bundle();
-        tBundle.putInt("HANDLETYPE", HANDLE_TYPE_TRANSFILE);       
+        tBundle.putInt("HANDLETYPE", HANDLE_TYPE_TRANSFILE);
         tBundle.putInt("USERID", userid);
         tBundle.putString("FILENAME", filename);
         tBundle.putString("TEMPFILE", tempfilepath);
@@ -587,7 +587,7 @@ public class AnyChatCoreSDK
 			return;
     	Message tMsg=new Message();
         Bundle tBundle=new Bundle();
-        tBundle.putInt("HANDLETYPE", HANDLE_TYPE_TRANSBUF);       
+        tBundle.putInt("HANDLETYPE", HANDLE_TYPE_TRANSBUF);
         tBundle.putInt("USERID", userid);
         tBundle.putByteArray("BUF", buf);
         tBundle.putInt("LENGTH", len);
@@ -601,7 +601,7 @@ public class AnyChatCoreSDK
 			return;
     	Message tMsg=new Message();
         Bundle tBundle=new Bundle();
-        tBundle.putInt("HANDLETYPE", HANDLE_TYPE_TRANSBUFEX);       
+        tBundle.putInt("HANDLETYPE", HANDLE_TYPE_TRANSBUFEX);
         tBundle.putInt("USERID", userid);
         tBundle.putByteArray("BUF", buf);
         tBundle.putInt("LENGTH", len);
@@ -618,13 +618,13 @@ public class AnyChatCoreSDK
 			return;
     	Message tMsg=new Message();
         Bundle tBundle=new Bundle();
-        tBundle.putInt("HANDLETYPE", HANDLE_TYPE_SDKFILTER);       
+        tBundle.putInt("HANDLETYPE", HANDLE_TYPE_SDKFILTER);
         tBundle.putByteArray("BUF", buf);
         tBundle.putInt("LENGTH", len);
          tMsg.setData(tBundle);
         mHandler.sendMessage(tMsg);
     }
-	
+
 	// 视频数据回调函数
 	private void OnVideoDataCallBack(int userid, byte[] buf, int len, int width, int height)
 	{
@@ -633,7 +633,7 @@ public class AnyChatCoreSDK
 		int mirror = QueryUserStateInt(userid, AnyChatDefine.BRAC_USERSTATE_VIDEOMIRRORED);
 		mVideoHelper.ShowVideo(userid, buf, degree, mirror);
 	}
-	
+
 	// 视频呼叫事件回调函数
 	private void OnVideoCallEventCallBack(int eventtype, int userid, int errorcode, int flags, int param, String userStr)
 	{
@@ -651,7 +651,7 @@ public class AnyChatCoreSDK
         tMsg.setData(tBundle);
         mHandler.sendMessage(tMsg);
 	}
-	
+
 	// 录像、快照任务完成回调函数
 	private void OnRecordSnapShotExCallBack(int dwUserId, int dwErrorCode, String lpFileName, int dwElapse, int dwFlags, int dwParam, String lpUserStr)
 	{
@@ -670,7 +670,7 @@ public class AnyChatCoreSDK
         tMsg.setData(tBundle);
         mHandler.sendMessage(tMsg);
 	}
-	
+
 	// 数据加密、解密回调函数
 	private int OnDataEncDecCallBack(int userid, int flags, byte[] buf, int len, AnyChatOutParam outParam)
 	{
@@ -679,7 +679,7 @@ public class AnyChatCoreSDK
 		else
 			return -1;
 	}
-	
+
 	// 业务对象事件回调函数定义
 	private void OnObjectEventNotifyCallBack(int dwObjectType, int dwObjectId, int dwEventType, int dwParam1, int dwParam2, int dwParam3, int dwParam4, String lpStrParam)
 	{
@@ -699,12 +699,12 @@ public class AnyChatCoreSDK
         tMsg.setData(tBundle);
         mHandler.sendMessage(tMsg);
 	}
-	
+
     static {
 		System.loadLibrary("audio_preprocessing");
 		System.loadLibrary("mediacore");
     	System.loadLibrary("anychatcore");
     }
-    
+
 }
 

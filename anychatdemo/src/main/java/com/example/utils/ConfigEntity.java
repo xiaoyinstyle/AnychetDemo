@@ -9,8 +9,8 @@ public class ConfigEntity {
 	public static final int VIDEO_QUALITY_BEST = 4;			// 较好视频质量
 	
 	public int mConfigMode = VIDEO_MODE_SERVERCONFIG;
-	public int mResolutionWidth = 0;
-	public int mResolutionHeight = 0;
+	public int mResolutionWidth = 400;
+	public int mResolutionHeight = 400;
 	
 	public int mVideoBitrate = 150*1000;					// 本地视频码率
 	public int mVideoFps = 10;								// 本地视频帧率

@@ -53,5 +53,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
 
     compile 'com.android.support:recyclerview-v7:22.0.0'
-    compile(name: 'recycleviewLib', ext: 'aar')
+    compile(name: 'recyclerlib-0.0.3', ext: 'aar')
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
 }
